@@ -43,7 +43,7 @@ Commit and push — GitHub Pages will rebuild automatically within a minute.
 
 ## Contact
 
-- 📧 Email: fadlawaa [at] med.umich.edu
+- 📧 Email: alakwaaf@umich.edu
 - 🎓 [Google Scholar](https://scholar.google.com/citations?user=0_wKueAAAAAJ&hl=en)
 - 📚 [PubMed](https://pubmed.ncbi.nlm.nih.gov/?term=fadhl+alakwaa)
 - 💻 [GitHub](https://github.com/fadhlyemen)
