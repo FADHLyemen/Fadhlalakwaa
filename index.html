@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fadhl M. Alakwaa, PhD — Computational Kidney Disease Researcher</title>
+<meta name="description" content="Fadhl M. Alakwaa, PhD — Assistant Research Scientist at University of Michigan. Multi-omics data integration, kidney precision medicine, bioinformatics tools.">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #00274C;
+  --maize: #FFCB05;
+  --slate: #2C3E50;
+  --ink: #1a1a2e;
+  --mist: #f0f2f5;
+  --cloud: #ffffff;
+  --accent: #2980b9;
+  --accent2: #16a085;
+  --warm: #e67e22;
+  --text: #2d3436;
+  --text-light: #636e72;
+  --border: #dfe6e9;
+  --serif: 'Source Serif 4', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--mist);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HERO */
+.hero {
+  background: var(--navy);
+  color: white;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(255,203,5,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(41,128,185,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 40px 60px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-text h1 {
+  font-family: var(--serif);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.hero-text h1 span {
+  color: var(--maize);
+}
+
+.hero-title {
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
+}
+
+.hero-text p.bio {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.85);
+  max-width: 600px;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--maize);
+}
+
+.stat-num {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--maize);
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+}
+
+.hero-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.hero-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background: var(--maize);
+  color: var(--navy);
+}
+
+.btn-primary:hover { background: #e6b800; transform: translateY(-1px); }
+
+.btn-outline {
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+}
+
+.btn-outline:hover { border-color: var(--maize); color: var(--maize); }
+
+/* NAV */
+nav {
+  background: var(--cloud);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.92);
+}
+
+nav .nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+nav .nav-brand {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--navy);
+  text-decoration: none;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+nav .nav-links a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+  position: relative;
+}
+
+nav .nav-links a:hover,
+nav .nav-links a.active { color: var(--navy); }
+
+nav .nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--maize);
+  transition: width 0.3s;
+}
+
+nav .nav-links a:hover::after { width: 100%; }
+
+/* SECTIONS */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 70px 40px;
+}
+
+.section-header {
+  margin-bottom: 48px;
+}
+
+.section-header h2 {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.section-header .rule {
+  width: 48px;
+  height: 3px;
+  background: var(--maize);
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.section-header p {
+  color: var(--text-light);
+  font-size: 1.05rem;
+  max-width: 700px;
+}
+
+/* RESEARCH PILLARS */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.pillar {
+  background: var(--cloud);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.pillar:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,39,76,0.08);
+}
+
+.pillar-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.pillar h3 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.pillar p {
+  font-size: 0.92rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.pillar-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 16px;
+  letter-spacing: 0.02em;
+}
+
+/* TOOLS */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.tool-card {
+  background: var(--cloud);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,39,76,0.06);
+  border-color: var(--accent);
+}
+
+.tool-card h4 {
+  font-family: var(--mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.tool-card .tool-type {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.tool-card p {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* PUBLICATIONS */
+.pub-highlight {
+  display: grid;
+  gap: 16px;
+}
+
+.pub-item {
+  background: var(--cloud);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  transition: border-color 0.3s;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 20px;
+  align-items: start;
+}
+
+.pub-item:hover { border-color: var(--accent); }
+
+.pub-year {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 500;
+  padding-top: 3px;
+  white-space: nowrap;
+}
+
+.pub-content h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.pub-content .pub-journal {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.pub-content .pub-authors {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+.pub-role {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  height: fit-content;
+}
+
+.role-first { background: #e8f5e9; color: #2e7d32; }
+.role-cofirst { background: #fff3e0; color: #e65100; }
+.role-corresponding { background: #e3f2fd; color: #1565c0; }
+.role-senior { background: #f3e5f5; color: #7b1fa2; }
+
+.pub-more {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.pub-more a {
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px dashed var(--accent);
+  padding-bottom: 2px;
+}
+
+/* TRAINING WORKSHOPS */
+.workshops {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.workshop-card {
+  background: var(--cloud);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.workshop-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,39,76,0.06);
+}
+
+.workshop-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.ws-intl::before { background: var(--accent); }
+.ws-national::before { background: var(--warm); }
+.ws-local::before { background: var(--accent2); }
+
+.workshop-card .ws-location {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.workshop-card h4 {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.workshop-card p {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.workshop-date {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: 12px;
+}
+
+/* CONTACT */
+.contact-section {
+  background: var(--navy);
+  color: white;
+  border-radius: 20px;
+  padding: 48px;
+  margin: 0 auto 80px;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.contact-section h2 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.contact-section p { color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+}
+
+.contact-links a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.3s;
+}
+
+.contact-links a:hover {
+  border-color: var(--maize);
+  background: rgba(255,203,5,0.08);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.82rem;
+  color: var(--text-light);
+  border-top: 1px solid var(--border);
+}
+
+footer a { color: var(--navy); text-decoration: none; }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-text, .hero-stats, .hero-links {
+  animation: fadeUp 0.7s ease-out both;
+}
+
+.hero-stats { animation-delay: 0.2s; }
+.hero-links { animation-delay: 0.35s; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-inner { grid-template-columns: 1fr; padding: 50px 24px 40px; gap: 30px; }
+  .hero-text h1 { font-size: 2rem; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  section { padding: 50px 24px; }
+  .contact-section { grid-template-columns: 1fr; margin: 0 20px 60px; padding: 32px; }
+  .pub-item { grid-template-columns: 1fr; gap: 8px; }
+  .pub-year { order: -1; }
+  .pub-role { justify-self: start; }
+  nav .nav-links { gap: 16px; }
+  nav .nav-links a { font-size: 0.78rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>Fadhl M. <span>Alakwaa</span>, PhD</h1>
+      <div class="hero-title">Assistant Research Scientist · Department of Internal Medicine — Nephrology<br>University of Michigan, Ann Arbor</div>
+      <p class="bio">I develop computational and bioinformatics approaches to decode complex kidney diseases through multi-omics data integration, cross-species molecular mapping, and machine learning — translating high-dimensional data into precision medicine insights.</p>
+      <div class="hero-links">
+        <a href="mailto:alakwaaf@umich.edu" class="btn-primary">✉ alakwaaf@umich.edu</a>
+        <a href="https://scholar.google.com/citations?user=YOUR_ID" class="btn-outline" target="_blank">Google Scholar</a>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=fadhl+alakwaa" class="btn-outline" target="_blank">PubMed</a>
+        <a href="https://github.com/falakwaa" class="btn-outline" target="_blank">GitHub</a>
+        <a href="https://orcid.org/0000-0001-5349-7960" class="btn-outline" target="_blank">ORCID</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><span class="stat-num">39</span><span class="stat-label">Peer-Reviewed Articles</span></div>
+      <div class="stat-card"><span class="stat-num">3</span><span class="stat-label">J Clin Invest Papers</span></div>
+      <div class="stat-card"><span class="stat-num">20+</span><span class="stat-label">Funded Grants (Co-I)</span></div>
+      <div class="stat-card"><span class="stat-num">5</span><span class="stat-label">Software Tools</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">F.M. Alakwaa</a>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#training">Training</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-header">
+    <div class="rule"></div>
+    <h2>Research Program</h2>
+    <p>My research bridges computational biology and clinical nephrology, using multi-omics data integration to advance precision medicine for kidney disease.</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-icon" style="background: #e3f2fd;">🧬</div>
+      <h3>Multi-Omics Data Integration for CKD</h3>
+      <p>Developing and applying complementary data integration methods (MOFA, DIABLO) to combine transcriptomics, proteomics, and metabolomics for mechanistic insights into chronic kidney disease progression.</p>
+      <span class="pillar-tag" style="background:#e3f2fd;color:#1565c0;">JCI Insight · NEPTUNE · KPMP</span>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-icon" style="background: #e8f5e9;">🐁</div>
+      <h3>Cross-Species Molecular Mapping</h3>
+      <p>Building computational frameworks (Mouse Map App) to translate between mouse model and human kidney disease signatures, enabling drug target validation and preclinical-to-clinical translation.</p>
+      <span class="pillar-tag" style="background:#e8f5e9;color:#2e7d32;">RPC2 · 6 Pharma Partners</span>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-icon" style="background: #fff3e0;">🤖</div>
+      <h3>Machine Learning for Kidney Cell Typing</h3>
+      <p>Applying machine learning algorithms to identify kidney cell types in single-cell and single-nucleus RNA-seq data, improving resolution of disease-specific cellular changes across kidney compartments.</p>
+      <span class="pillar-tag" style="background:#fff3e0;color:#e65100;">Heliyon · scRNA-seq · snRNA-seq</span>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-icon" style="background: #f3e5f5;">💊</div>
+      <h3>Computational Drug Repurposing</h3>
+      <p>Using single-cell transcriptomics and network pharmacology to identify repurposing opportunities, including SGLT2 inhibitor mechanisms in diabetic kidney disease and tamoxifen resistance in breast cancer.</p>
+      <span class="pillar-tag" style="background:#f3e5f5;color:#7b1fa2;">Patent Pending · mSystems</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" style="background: var(--cloud); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); max-width: none; padding-left: calc((100% - 1100px) / 2 + 40px); padding-right: calc((100% - 1100px) / 2 + 40px);">
+  <div class="section-header">
+    <div class="rule"></div>
+    <h2>Software &amp; Data Tools</h2>
+    <p>Open-source computational tools for the research community.</p>
+  </div>
+
+  <div class="tools-grid">
+    <div class="tool-card">
+      <span class="tool-type" style="background:#e3f2fd;color:#1565c0;">R Package</span>
+      <h4>Lilikoi</h4>
+      <p>Personalized pathway-based classification modeling using metabolomics data. Enables deep learning and traditional ML for disease subtyping.</p>
+      <div style="margin-top:12px;font-size:0.82rem;color:var(--text-light);">Published: <em>GigaScience</em> (2018) · PMID: 30535020</div>
+    </div>
+
+    <div class="tool-card">
+      <span class="tool-type" style="background:#e8f5e9;color:#2e7d32;">R Package</span>
+      <h4>proRate</h4>
+      <p>Infer gene transcription elongation rates with a novel least sum of squares method from Pol II profiling data.</p>
+      <div style="margin-top:12px;font-size:0.82rem;color:var(--text-light);">Published: <em>NAR Genomics &amp; Bioinformatics</em> (2025) · PMID: 40918071</div>
+    </div>
+
+    <div class="tool-card">
+      <span class="tool-type" style="background:#fff3e0;color:#e65100;">Web Application</span>
+      <h4>Mouse Map App</h4>
+      <p>Cross-species molecular mapping tool for translating mouse CKD model signatures to human kidney disease. Used by RPC2 pharma partners for target validation.</p>
+      <div style="margin-top:12px;font-size:0.82rem;color:var(--text-light);">Presented at RPC2 across 5 countries</div>
+    </div>
+
+    <div class="tool-card">
+      <span class="tool-type" style="background:#f3e5f5;color:#7b1fa2;">Pipeline</span>
+      <h4>MetabolonR</h4>
+      <p>Reproducible Jupyter-notebook and R Shiny workflow for analyzing Metabolon metabolomics data. Used in NEPTUNE and ALS research.</p>
+      <div style="margin-top:12px;font-size:0.82rem;color:var(--text-light);">Presented at MANA &amp; Dept. of Internal Medicine</div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED PUBLICATIONS -->
+<section id="publications">
+  <div class="section-header">
+    <div class="rule"></div>
+    <h2>Selected Publications</h2>
+    <p>39 peer-reviewed articles including 3 in <em>J Clin Invest</em>, 2 in <em>Nature Communications</em>, and publications in <em>Kidney International</em>, <em>JCI Insight</em>, and <em>CJASN</em>.</p>
+  </div>
+
+  <div class="pub-highlight">
+    <div class="pub-item">
+      <div class="pub-year">2026</div>
+      <div class="pub-content">
+        <h4>Metabolic surgery mitigates early kidney injury in obese youth with diabetes by suppressing mTORC1/JAK-STAT signaling</h4>
+        <div class="pub-journal">Journal of Clinical Investigation</div>
+        <div class="pub-authors">Naik AS*, <strong>Alakwaa FM*</strong>, Nair V, McCown PJ, Schaub JA, et al.</div>
+      </div>
+      <span class="pub-role role-cofirst">Co-First</span>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div class="pub-content">
+        <h4>Leveraging complementary multi-omics data integration methods for mechanistic insights in kidney diseases</h4>
+        <div class="pub-journal">JCI Insight</div>
+        <div class="pub-authors"><strong>Alakwaa F</strong>, Das V, Majumdar A, Nair V, Fermin D, et al.</div>
+      </div>
+      <span class="pub-role role-first">First Author</span>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div class="pub-content">
+        <h4>proRate: an R package to infer gene transcription rates with a novel least sum of squares method</h4>
+        <div class="pub-journal">NAR Genomics and Bioinformatics</div>
+        <div class="pub-authors">Liu Y, <strong>Alakwaa F**</strong></div>
+      </div>
+      <span class="pub-role role-corresponding">Corresponding</span>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2024</div>
+      <div class="pub-content">
+        <h4>Identification of kidney cell types in scRNA-seq and snRNA-seq data using machine learning algorithms</h4>
+        <div class="pub-journal">Heliyon</div>
+        <div class="pub-authors">Tisch A, Madapoosi S, Blough S, ..., Mahfouz A, <strong>Alakwaa F**</strong></div>
+      </div>
+      <span class="pub-role role-senior">Senior Author</span>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div class="pub-content">
+        <h4>SGLT2 inhibitors mitigate kidney tubular metabolic and mTORC1 perturbations in youth-onset type 2 diabetes</h4>
+        <div class="pub-journal">Journal of Clinical Investigation</div>
+        <div class="pub-authors">Schaub JA, <strong>AlAkwaa FM*</strong>, McCown PJ*, Naik AS*, Nair V, et al.</div>
+      </div>
+      <span class="pub-role role-cofirst">Co-First</span>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div class="pub-content">
+        <h4>Precision nephrology identified tumor necrosis factor activation variability in minimal change disease and focal segmental glomerulosclerosis</h4>
+        <div class="pub-journal">Kidney International</div>
+        <div class="pub-authors">Mariani LH, Eddy S, <strong>AlAkwaa FM</strong>, McCown PJ, et al.</div>
+      </div>
+      <span class="pub-role" style="background:#f5f5f5;color:#666;">Key Author</span>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2020</div>
+      <div class="pub-content">
+        <h4>Repurposing didanosine as a potential treatment for COVID-19 using single-cell RNA sequencing data</h4>
+        <div class="pub-journal">mSystems</div>
+        <div class="pub-authors"><strong>Alakwaa FM**</strong> (sole author)</div>
+      </div>
+      <span class="pub-role role-corresponding">Sole Author</span>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2018</div>
+      <div class="pub-content">
+        <h4>Lilikoi: an R package for personalized pathway-based classification modeling using metabolomics data</h4>
+        <div class="pub-journal">GigaScience</div>
+        <div class="pub-authors"><strong>Al-Akwaa FM</strong>, Yunits B, Huang S, Alhajaji H, Garmire LX</div>
+      </div>
+      <span class="pub-role role-first">First Author</span>
+    </div>
+  </div>
+
+  <div class="pub-more">
+    <a href="https://pubmed.ncbi.nlm.nih.gov/?term=fadhl+alakwaa" target="_blank">View all 39 publications on PubMed →</a>
+  </div>
+</section>
+
+<!-- TRAINING & WORKSHOPS -->
+<section id="training" style="background: var(--cloud); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); max-width: none; padding-left: calc((100% - 1100px) / 2 + 40px); padding-right: calc((100% - 1100px) / 2 + 40px);">
+  <div class="section-header">
+    <div class="rule"></div>
+    <h2>Training &amp; Workshops</h2>
+    <p>I organize and lead hands-on data training workshops for clinicians, wet lab researchers, and industry scientists across three continents.</p>
+  </div>
+
+  <div class="workshops">
+    <div class="workshop-card ws-intl">
+      <div class="ws-location" style="color:var(--accent);">🌏 International — Tokyo, Japan</div>
+      <h4>WCN Big Data Lab 2026</h4>
+      <p>Hands-on training for clinicians and scientists on cellxgene, KPMP Kidney Cell Atlas, and Nephroseq tools at the World Congress of Nephrology.</p>
+      <div class="workshop-date">2026 · World Congress of Nephrology</div>
+    </div>
+
+    <div class="workshop-card ws-intl">
+      <div class="ws-location" style="color:var(--accent);">🌎 International — Buenos Aires, Argentina</div>
+      <h4>WCN Big Data Lab 2024</h4>
+      <p>Trained clinicians and scientists on cellxgene, KPMP Kidney Cell Atlas, and Nephroseq tools for kidney disease research.</p>
+      <div class="workshop-date">2024 · World Congress of Nephrology</div>
+    </div>
+
+    <div class="workshop-card ws-national">
+      <div class="ws-location" style="color:var(--warm);">🇺🇸 National — Houston, TX</div>
+      <h4>KPMP Industry Roundtable</h4>
+      <p>Hands-on training for industry scientists on KPMP data tools for kidney research at ASN Kidney Week 2025.</p>
+      <div class="workshop-date">November 2025 · ASN Kidney Week</div>
+    </div>
+
+    <div class="workshop-card ws-national">
+      <div class="ws-location" style="color:var(--warm);">🇺🇸 National — Consortium</div>
+      <h4>KPMP Data Training Workshop</h4>
+      <p>Two-day hands-on training for KPMP consortium investigators on cellxgene, Explorer, Spatial Viewer, DAVE Repository, and Study Participant Atlas.</p>
+      <div class="workshop-date">March 10–11, 2026 · KPMP Consortium</div>
+    </div>
+
+    <div class="workshop-card ws-local">
+      <div class="ws-location" style="color:var(--accent2);">🏛️ Institutional — Ann Arbor, MI</div>
+      <h4>Pizza &amp; Pixels: Xenium Explorer</h4>
+      <p>Organized hands-on workshop for wet lab researchers on subcellular gene expression visualization using 10x Xenium Explorer 3.2.0.</p>
+      <div class="workshop-date">September 2025 · MiKTMC</div>
+    </div>
+
+    <div class="workshop-card ws-local">
+      <div class="ws-location" style="color:var(--accent2);">🏛️ Ongoing</div>
+      <h4>cellxgene VIP Training</h4>
+      <p>Teaching clinical scientists to use cellxgene VIP for data analysis and visualization of scRNA-seq data since 2020.</p>
+      <div class="workshop-date">2020–Present · University of Michigan</div>
+    </div>
+  </div>
+</section>
+
+<!-- AFFILIATIONS -->
+<section>
+  <div class="section-header">
+    <div class="rule"></div>
+    <h2>Affiliations &amp; Consortia</h2>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;">
+    <span style="padding:10px 20px;border-radius:10px;background:var(--cloud);border:1px solid var(--border);font-size:0.9rem;font-weight:500;color:var(--navy);">NEPTUNE</span>
+    <span style="padding:10px 20px;border-radius:10px;background:var(--cloud);border:1px solid var(--border);font-size:0.9rem;font-weight:500;color:var(--navy);">Kidney Precision Medicine Project (KPMP)</span>
+    <span style="padding:10px 20px;border-radius:10px;background:var(--cloud);border:1px solid var(--border);font-size:0.9rem;font-weight:500;color:var(--navy);">Renal Pre-Competitive Consortium (RPC2)</span>
+    <span style="padding:10px 20px;border-radius:10px;background:var(--cloud);border:1px solid var(--border);font-size:0.9rem;font-weight:500;color:var(--navy);">Michigan Kidney Translational Medicine Center (MiKTMC)</span>
+    <span style="padding:10px 20px;border-radius:10px;background:var(--cloud);border:1px solid var(--border);font-size:0.9rem;font-weight:500;color:var(--navy);">American Society of Nephrology</span>
+    <span style="padding:10px 20px;border-radius:10px;background:var(--cloud);border:1px solid var(--border);font-size:0.9rem;font-weight:500;color:var(--navy);">International Society for Computational Biology</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding-bottom:0;">
+  <div class="contact-section">
+    <div>
+      <h2>Get in Touch</h2>
+      <p style="margin-bottom:16px;">I'm always interested in collaborations on computational kidney disease research, multi-omics integration, and precision nephrology.</p>
+      <p style="font-size:0.85rem;">Department of Internal Medicine — Nephrology<br>University of Michigan Medical School<br>Ann Arbor, MI 48109</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:alakwaaf@umich.edu">✉&nbsp; alakwaaf@umich.edu</a>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/?term=fadhl+alakwaa" target="_blank">📚&nbsp; PubMed Profile</a>
+      <a href="https://orcid.org/0000-0001-5349-7960" target="_blank">🆔&nbsp; ORCID: 0000-0001-5349-7960</a>
+      <a href="https://github.com/falakwaa" target="_blank">💻&nbsp; GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Fadhl M. Alakwaa, PhD · University of Michigan · Built with purpose, not templates</p>
+</footer>
+
+</body>
+</html>
